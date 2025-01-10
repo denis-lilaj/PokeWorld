@@ -1,5 +1,7 @@
 import '@/styles/globals.css';
 import '@/styles/colors.css';
+
+import { StoreProviderWrapper } from '@/app/components/storeProvider-wrapper';
 interface RootLayoutProps {
   children: React.ReactNode;
 }
@@ -12,7 +14,9 @@ export const metadata = {
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang='en'>
-      <body className='bg-amber-700'>{children}</body>
+      <body className='bg-amber-700'>
+        <StoreProviderWrapper>{children}</StoreProviderWrapper>
+      </body>
     </html>
   );
 };

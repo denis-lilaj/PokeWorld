@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Not Found',
 };
 
-export default function NotFound() {
+export default function NotFound(): JSX.Element {
   return (
     <main>
       <section className='bg-white'>
