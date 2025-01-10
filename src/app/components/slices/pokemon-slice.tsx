@@ -5,7 +5,7 @@ interface Pokemon {
   id: string;
   name: string;
   imageSrc: string;
-  type: string;
+  types: string[];
 }
 
 interface PokemonState {
@@ -63,8 +63,24 @@ export const fetchPokemons = createAsyncThunk(
   'pokemon/fetchAll',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/`);
-      return response.data;
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon?limit=20&offset=0`,
+      );
+
+      const pokemons = await Promise.all(
+        response.data.results.map(async ({ url }: { url: string }) => {
+          const { data } = await axios.get(url);
+
+          return {
+            id: data.id,
+            name: data.name,
+            imageSrc: data.sprites.front_default,
+            types: data.types.map((typeInfo: any) => typeInfo.type.name),
+          };
+        }),
+      );
+
+      return pokemons;
     } catch (error: any) {
       return rejectWithValue(error.response?.data || 'Failed to fetch Pokémon');
     }
