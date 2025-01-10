@@ -13,9 +13,9 @@ module.exports = {
     'prettier',
   ],
   rules: {
-    'no-unused-vars': 'off',
-    'no-console': 'warn',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'no-unused-vars': 'error',
+    'no-console': 'error',
+    '@typescript-eslint/explicit-module-boundary-types': 'error',
     'react/no-unescaped-entities': 'off',
 
     'react/display-name': 'off',
@@ -24,11 +24,11 @@ module.exports = {
       { props: 'never', children: 'never' },
     ],
 
-    //#region  //*=========== Unused Import ===========
-    '@typescript-eslint/no-unused-vars': 'off',
-    'unused-imports/no-unused-imports': 'warn',
+    //#region  //*=========== Unused Import ==========
+    '@typescript-eslint/no-unused-vars': 'error',
+    'unused-imports/no-unused-imports': 'error',
     'unused-imports/no-unused-vars': [
-      'warn',
+      'error',
       {
         vars: 'all',
         varsIgnorePattern: '^_',
@@ -36,12 +36,12 @@ module.exports = {
         argsIgnorePattern: '^_',
       },
     ],
-    //#endregion  //*======== Unused Import ===========
+    //#endregion  //*======== Unused Import ==========
 
-    //#region  //*=========== Import Sort ===========
-    'simple-import-sort/exports': 'warn',
+    //#region  //*=========== Import Sort ==========
+    'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': [
-      'warn',
+      'error',
       {
         groups: [
           // ext library & side effect imports
@@ -75,7 +75,7 @@ module.exports = {
         ],
       },
     ],
-    //#endregion  //*======== Import Sort ===========
+    //#endregion  //*======== Import Sort ==========
   },
   globals: {
     React: true,
