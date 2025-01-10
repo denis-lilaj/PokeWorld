@@ -5,6 +5,7 @@ import { fetchPokemons } from '@/app/components/slices/pokemon-slice';
 import { AppDispatch, RootState } from '../reduxStore';
 import { useEffect } from 'react';
 import Image from 'next/image';
+import SearchFilter from 'components/ui/searchFilter';
 
 const HomePage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -16,9 +17,14 @@ const HomePage: React.FC = () => {
 
   console.log(pokemons);
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.value);
+  };
+
   return (
     <div>
       <h1>Pokémon List</h1>
+      <SearchFilter onChange={handleChange} />
       <ul>
         {pokemons &&
           pokemons.map((pokemon) => (
