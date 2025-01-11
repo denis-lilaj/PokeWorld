@@ -13,7 +13,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   const query = searchParams.get('query');
 
   try {
-    const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100');
+    const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=20');
     const results = response.data.results;
 
     let pokemons: Pokemon[] = await Promise.all(

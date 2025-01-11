@@ -52,7 +52,25 @@ export const fetchPokemonById = createAsyncThunk(
       const response = await axios.get(
         `https://pokeapi.co/api/v2/pokemon/${pokemonId}`,
       );
-      return response.data;
+      const data = response.data;
+
+      const pokemonDetails = {
+        id: data.id.toString(),
+        name: data.name,
+        imageSrc: data.sprites.front_default,
+        types: data.types.map((typeInfo: { type: { name: string } }) => typeInfo.type.name),
+        height: data.height,
+        weight: data.weight,
+        abilities: data.abilities.map(
+          (abilityInfo: { ability: { name: string } }) => abilityInfo.ability.name
+        ),
+        stats: data.stats.map((statInfo: { base_stat: number; stat: { name: string } }) => ({
+          name: statInfo.stat.name,
+          base_stat: statInfo.base_stat,
+        })),
+      };
+
+      return pokemonDetails;
     } catch (error: any) {
       return rejectWithValue(error.response?.data || 'Failed to fetch Pokémon');
     }

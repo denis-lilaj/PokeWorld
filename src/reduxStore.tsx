@@ -6,7 +6,7 @@ import pokemonDetailsReducer from '@/app/components/slices/pokemonDetail-slice'
 const store = configureStore({
   reducer: {
     pokemon: pokemonReducer,
-    pokemonDetails : pokemonDetailsReducer
+    pokemonDetail : pokemonDetailsReducer
   },
 });
 

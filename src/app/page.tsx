@@ -2,6 +2,7 @@
 import axios from 'axios';
 import SearchFilter from 'components/ui/searchFilter';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -44,6 +45,11 @@ const HomePage: React.FC = () => {
   };
 };
 
+const router=useRouter();
+const handleDetails=(id: string)=>{
+  router.push(`/pokemonDetails/${id}`)
+}
+
   return (
     <div>
       <h1>Pokémon List</h1>
@@ -57,9 +63,10 @@ const HomePage: React.FC = () => {
                 width={50}
                 height={50}
                 src={pokemon.imageSrc.toString()}
-                alt="margaritar"
+                alt={pokemon.name}
               />
-              Types: {pokemon.types.join(', ')}
+              Types: {pokemon.types.join(', ')} <br></br>
+              <button onClick={()=>handleDetails(pokemon.id)}>Click to view the details</button>
             </li>
           ))}
       </ul>

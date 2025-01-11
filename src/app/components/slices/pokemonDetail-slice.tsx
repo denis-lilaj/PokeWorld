@@ -16,15 +16,24 @@ interface PokemonDetails extends Pokemon {
   stats: {
     name: string;                 
     base_stat: number;            
-  };
+  }[];
 }
 
 interface PokemonDetailsState {
-  pokemonDetails: PokemonDetails[];
+  pokemonDetails: PokemonDetails;
 }
 
 const initialState : PokemonDetailsState = {
-  pokemonDetails: [],
+  pokemonDetails: {
+    id: '',                   
+    name: '',                 
+    imageSrc: '',              
+    types: [],                 
+    height: 0,                 
+    weight: 0,                 
+    abilities: [],             
+    stats: [],                 
+  },
 }
 
 const pokemonDetailSlice = createSlice({
@@ -36,13 +45,8 @@ const pokemonDetailSlice = createSlice({
     .addCase(
       fetchPokemonById.fulfilled,
       (state, action: PayloadAction<PokemonDetails>) => {
-        const existingIndex = state.pokemonDetails.findIndex(
-          (x) => x.id === action.payload.id,
-        );
-        if (existingIndex === -1) {
-          state.pokemonDetails.push(action.payload);
-        }
-      },
+        state.pokemonDetails = action.payload; 
+      }
     )
   }
 })
