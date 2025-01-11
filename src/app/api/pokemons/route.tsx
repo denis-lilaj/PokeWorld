@@ -13,7 +13,9 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   const query = searchParams.get('query');
 
   try {
-    const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=20');
+    const response = await axios.get(
+      'https://pokeapi.co/api/v2/pokemon?limit=20',
+    );
     const results = response.data.results;
 
     let pokemons: Pokemon[] = await Promise.all(
@@ -24,9 +26,11 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
           id: data.id,
           name: data.name,
           imageSrc: data.sprites.front_default,
-          types: data.types.map((typeInfo: { type: { name: string } }) => typeInfo.type.name),
+          types: data.types.map(
+            (typeInfo: { type: { name: string } }) => typeInfo.type.name,
+          ),
         };
-      })
+      }),
     );
 
     if (query) {
@@ -34,7 +38,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       pokemons = pokemons.filter(
         (pokemon) =>
           pokemon.name.toLowerCase().includes(searchQuery) ||
-          pokemon.id.toString() === searchQuery
+          pokemon.id.toString() === searchQuery,
       );
     }
 
@@ -44,7 +48,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     console.error('Error fetching Pokémon:', error);
     return NextResponse.json(
       { status: 'error', message: 'Failed to fetch Pokémon' },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

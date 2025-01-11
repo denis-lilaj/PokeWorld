@@ -1,12 +1,12 @@
-module.exports = {
+export default {
   arrowParens: 'always',
   singleQuote: true,
   jsxSingleQuote: true,
   tabWidth: 2,
   semi: true,
   plugins: [
-    require('prettier-plugin-tailwindcss'),
-    require('@ianvs/prettier-plugin-sort-imports'),
+    'prettier-plugin-tailwindcss',
+    '@ianvs/prettier-plugin-sort-imports',
   ],
   importOrder: ['^@/(.*)$', '^[./]'],
   importOrderSeparation: true,

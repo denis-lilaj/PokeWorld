@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { addTeam, removeTeam } from '@/app/components/slices/trainer-slice';
 import { AppDispatch, RootState } from '@/reduxStore';
 

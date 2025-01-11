@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { fetchPokemons } from '@/app/components/slices/pokemon-slice';
 import {
   addPokemonToTeam,

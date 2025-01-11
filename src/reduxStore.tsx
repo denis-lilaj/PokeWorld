@@ -1,11 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
 import pokemonReducer from '@/app/components/slices/pokemon-slice';
 import pokemonDetailsReducer from '@/app/components/slices/pokemonDetail-slice';
 import trainerReducer from '@/app/components/slices/trainer-slice';
-
 
 const persistConfig = {
   key: 'root',
@@ -14,12 +12,11 @@ const persistConfig = {
 
 const persistedTrainerReducer = persistReducer(persistConfig, trainerReducer);
 
-
 const store = configureStore({
   reducer: {
     pokemon: pokemonReducer,
-    pokemonDetail : pokemonDetailsReducer,
-    trainer : persistedTrainerReducer
+    pokemonDetail: pokemonDetailsReducer,
+    trainer: persistedTrainerReducer,
   },
 });
 
