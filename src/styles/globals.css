@@ -3,30 +3,82 @@
 @tailwind utilities;
 
 :root {
-  /* #region  /**=========== Primary Color =========== */
-  /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
-  --tw-color-primary-50: 240 249 255;
-  --tw-color-primary-100: 224 242 254;
-  --tw-color-primary-200: 186 230 253;
-  --tw-color-primary-300: 125 211 252;
-  --tw-color-primary-400: 56 189 248;
-  --tw-color-primary-500: 14 165 233;
-  --tw-color-primary-600: 2 132 199;
-  --tw-color-primary-700: 3 105 161;
-  --tw-color-primary-800: 7 89 133;
-  --tw-color-primary-900: 12 74 110;
-  --color-primary-50: rgb(var(--tw-color-primary-50)); /* #f0f9ff */
-  --color-primary-100: rgb(var(--tw-color-primary-100)); /* #e0f2fe */
-  --color-primary-200: rgb(var(--tw-color-primary-200)); /* #bae6fd */
-  --color-primary-300: rgb(var(--tw-color-primary-300)); /* #7dd3fc */
-  --color-primary-400: rgb(var(--tw-color-primary-400)); /* #38bdf8 */
-  --color-primary-500: rgb(var(--tw-color-primary-500)); /* #0ea5e9 */
-  --color-primary-600: rgb(var(--tw-color-primary-600)); /* #0284c7 */
-  --color-primary-700: rgb(var(--tw-color-primary-700)); /* #0369a1 */
-  --color-primary-800: rgb(var(--tw-color-primary-800)); /* #075985 */
-  --color-primary-900: rgb(var(--tw-color-primary-900)); /* #0c4a6e */
-  /* #endregion  /**======== Primary Color =========== */
+  /* colors choice is this one to match the starter pokemons colors, 
+  so blue for squirtle, yellow for pikachu
+  red for charizard, and the more neutral one is green for bulbasaur */
+  --primary: 39 127 251;
+  --secondary: 255 203 5;
+  --accent: 220 20 60;
+  --neutral: 38 85 41;;
+
+  --background: 248 250 252;
 }
+
+@layer utilities {
+  .text-primary {
+    color: rgb(var(--primary));
+  }
+  .text-secondary {
+    color: rgb(var(--secondary));
+  }
+  .text-accent {
+    color: rgb(var(--accent));
+  }
+  .text-neutral {
+    color: rgb(var(--neutral));
+  }
+
+  .bg-primary {
+    background-color: rgb(var(--primary));
+  }
+  .bg-secondary {
+    background-color: rgb(var(--secondary));
+  }
+  .bg-accent {
+    background-color: rgb(var(--accent));
+  }
+  .bg-neutral {
+    background-color: rgb(var(--neutral));
+  }
+  .bg-background {
+    background-color: rgb(var(--background));
+  }
+
+  .border-primary {
+    border-color: rgb(var(--primary));
+  }
+  .border-secondary {
+    border-color: rgb(var(--secondary));
+  }
+  .border-accent {
+    border-color: rgb(var(--accent));
+  }
+  .border-neutral {
+    border-color: rgb(var(--neutral));
+  }
+}
+
+@layer components {
+  /* this choice for the background has been made so that it is a vibrant one to match the pokemon theme */
+  .bg-gradient-to-r {
+    background: linear-gradient(to right, rgb(var(--primary)), rgb(var(--secondary)), rgb(var(--accent)));
+  }
+}
+
+@layer components {
+  .btn-neutral {
+    background-color: rgb(var(--neutral));
+    color: white;
+    border: 2px solid rgb(var(--neutral));
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .btn-neutral:hover {
+    background-color: white;
+    color: rgb(var(--neutral));
+  }
+}
+
 
 @layer base {
   /* inter var - latin */

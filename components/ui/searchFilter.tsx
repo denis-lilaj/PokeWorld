@@ -1,3 +1,4 @@
+import Button from 'components/ui/Button';
 import React, { useState } from 'react';
 
 const SearchFilter = ({
@@ -7,26 +8,33 @@ const SearchFilter = ({
   handleInputValue: (value: string) => void;
 }): JSX.Element => {
   const [inputValue, setInputValue] = useState<string>('');
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
+    const value = event.target.value;
+    setInputValue(value);
+
+    if (value === '') {
+      handleInputValue('');
+    }
   };
+
   const handleButtonClick = () => {
     handleInputValue(inputValue);
   };
 
   return (
-    <div className='flex items-center space-x-4 p-4'>
+    <div className="max-w-4xl mx-auto mt-10 p-4 flex flex-col justify-center items-center sm:space-x-4">
       <input
         onChange={handleInputChange}
-        placeholder='Search By Id or Name'
-        className='border border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500'
+        value={inputValue}
+        placeholder="Search By Id or Name"
+        className="w-full sm:w-72 p-3 rounded-lg border-2 border-neutral bg-white text-black placeholder-neutral focus:outline-none focus:ring-2 focus:ring-primary transition-all"
       />
-      <button
+      <Button
         onClick={handleButtonClick}
-        className='bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none'
-      >
-        Search
-      </button>
+        text="Search"
+        className="mt-4 sm:mt-0 px-6 py-3"
+      />
     </div>
   );
 };
