@@ -77,7 +77,7 @@ export const fetchPokemonById = createAsyncThunk(
 
       return pokemonDetails;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data || 'Failed to fetch Pokémon');
+      return rejectWithValue(error.response?.data || 'Failed to catch the Pokémon!');
     }
   },
 );
@@ -105,7 +105,7 @@ export const fetchPokemons = createAsyncThunk(
 
       return pokemons;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data || 'Failed to fetch Pokémon');
+      return rejectWithValue(error.response?.data || 'No Pokémons in sight...');
     }
   },
 );

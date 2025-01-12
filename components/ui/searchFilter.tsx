@@ -33,7 +33,7 @@ const SearchFilter = ({
       <Button
         onClick={handleButtonClick}
         text="Search"
-        className="mt-4 sm:mt-0 px-6 py-3"
+        className="px-4 py-2 sm:mt-0 mt-4"
       />
     </div>
   );
