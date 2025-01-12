@@ -9,7 +9,7 @@
   --primary: 39 127 251;
   --secondary: 255 203 5;
   --accent: 220 20 60;
-  --neutral: 38 85 41;;
+  --neutral: 38 85 41;
 
   --background: 248 250 252;
 }
@@ -61,7 +61,12 @@
 @layer components {
   /* this choice for the background has been made so that it is a vibrant one to match the pokemon theme */
   .bg-gradient-to-r {
-    background: linear-gradient(to right, rgb(var(--primary)), rgb(var(--secondary)), rgb(var(--accent)));
+    background: linear-gradient(
+      to right,
+      rgb(var(--primary)),
+      rgb(var(--secondary)),
+      rgb(var(--accent))
+    );
   }
 }
 
@@ -70,15 +75,16 @@
     background-color: rgb(var(--neutral));
     color: white;
     border: 2px solid rgb(var(--neutral));
-    transition: background-color 0.3s, color 0.3s;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
   }
-  
+
   .btn-neutral:hover {
     background-color: white;
     color: rgb(var(--neutral));
   }
 }
-
 
 @layer base {
   /* inter var - latin */

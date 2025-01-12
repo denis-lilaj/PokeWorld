@@ -23,17 +23,17 @@ const SearchFilter = ({
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-10 p-4 flex flex-col justify-center items-center sm:space-x-4">
+    <div className='max-w-4xl mx-auto mt-10 p-4 flex flex-col justify-center items-center sm:space-x-4'>
       <input
         onChange={handleInputChange}
         value={inputValue}
-        placeholder="Search By Id or Name"
-        className="w-full sm:w-72 p-3 rounded-lg border-2 border-neutral bg-white text-black placeholder-neutral focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+        placeholder='Search By Id or Name'
+        className='w-full sm:w-72 p-3 rounded-lg border-2 border-neutral bg-white text-black placeholder-neutral focus:outline-none focus:ring-2 focus:ring-primary transition-all'
       />
       <Button
         onClick={handleButtonClick}
-        text="Search"
-        className="px-4 py-2 sm:mt-0 mt-4"
+        text='Search'
+        className='px-4 py-2 sm:mt-0 mt-4'
       />
     </div>
   );

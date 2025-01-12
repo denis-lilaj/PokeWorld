@@ -54,48 +54,63 @@ const TrainerPage: React.FC = () => {
     router.push('/trainerPage');
   };
 
-  if (!team) return null;
+  if (!team)
+    return (
+      <div className='min-h-screen flex items-center justify-center text-center'>
+        <p className='text-xl font-semibold text-neutral'>
+          Loading Poké-team details...
+        </p>
+      </div>
+    );
 
   const availablePokemons = pokemons.filter(
-    (pokemon) => !team.pokemons.some((p) => p.id === pokemon.id)
+    (pokemon) => !team.pokemons.some((p) => p.id === pokemon.id),
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-400 via-yellow-500 to-red-600 text-white">
-      <div className="container mx-auto px-4 py-8">
-      <button
-        onClick={handleBackClick}
-        className="bg-transparent text-white font-bold px-4 py-2 rounded-lg mt-4 mb-4 border-2 border-white hover:bg-white/20 transition"
-      >
-        ← Back to All Teams
-      </button>
-        <h1 className="text-4xl font-bold text-center text-primary mb-6">
+    <div className='min-h-screen bg-gradient-to-r from-blue-400 via-yellow-500 to-red-600 text-white'>
+      <div className='container mx-auto px-4 py-8'>
+        <button
+          onClick={handleBackClick}
+          className='bg-transparent text-white font-bold px-4 py-2 rounded-lg mt-4 mb-4 border-2 border-white hover:bg-white/20 transition'
+        >
+          ← Back to All Teams
+        </button>
+        <h1 className='text-4xl font-bold text-center text-primary mb-6'>
           Manage Team: {team.name}
         </h1>
 
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-primary mb-4">Your Team</h2>
+        <div className='mb-8'>
+          <h2 className='text-2xl font-semibold text-primary mb-4'>
+            Your Team
+          </h2>
           {team.pokemons.length === 0 ? (
             <p>No Pokémon in this team</p>
           ) : (
-            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
               {team.pokemons.map((p) => (
                 <li
                   key={p.id}
-                  className="bg-white bg-opacity-30 hover:bg-opacity-60 transition-all rounded-lg p-4 shadow-lg flex flex-col items-center"
+                  className='bg-white bg-opacity-30 hover:bg-opacity-60 transition-all rounded-lg p-4 shadow-lg flex flex-col items-center'
                 >
                   <Image
                     src={p.imageSrc}
                     alt={p.name}
                     width={80}
                     height={80}
-                    className="rounded-lg mb-4"
+                    className='rounded-lg mb-4'
                   />
-                  <h3 className="text-xl font-semibold text-primary">{p.name}</h3>
-                  <p className="text-md font-bold text-neutral">
+                  <h3 className='text-xl font-semibold text-primary'>
+                    {p.name}
+                  </h3>
+                  <p className='text-md font-bold text-neutral'>
                     Types: {p.types.join(', ')}
                   </p>
-                  <Button className="px-4 py-2 mt-4" onClick={() => handleRemovePokemon(p.id)} text="Remove" />
+                  <Button
+                    className='px-4 py-2 mt-4'
+                    onClick={() => handleRemovePokemon(p.id)}
+                    text='Remove'
+                  />
                 </li>
               ))}
             </ul>
@@ -103,25 +118,33 @@ const TrainerPage: React.FC = () => {
         </div>
 
         <div>
-          <h2 className="text-2xl font-semibold text-primary mb-4">Available Pokémon</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 className='text-2xl font-semibold text-primary mb-4'>
+            Available Pokémon
+          </h2>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
             {availablePokemons.map((pokemon) => (
               <div
                 key={pokemon.id}
-                className="bg-white bg-opacity-30 hover:bg-opacity-60 transition-all rounded-lg p-4 shadow-lg flex flex-col items-center"
+                className='bg-white bg-opacity-30 hover:bg-opacity-60 transition-all rounded-lg p-4 shadow-lg flex flex-col items-center'
               >
                 <Image
                   src={pokemon.imageSrc}
                   alt={pokemon.name}
                   width={100}
                   height={100}
-                  className="rounded-lg mb-4"
+                  className='rounded-lg mb-4'
                 />
-                <h3 className="text-xl font-semibold text-primary">{pokemon.name}</h3>
-                <p className="text-md font-bold text-neutral">
+                <h3 className='text-xl font-semibold text-primary'>
+                  {pokemon.name}
+                </h3>
+                <p className='text-md font-bold text-neutral'>
                   Types: {pokemon.types.join(', ')}
                 </p>
-                <Button className="px-4 py-2 mt-4" onClick={() => handleAddPokemon(pokemon)} text="Add to Team" />
+                <Button
+                  className='px-4 py-2 mt-4'
+                  onClick={() => handleAddPokemon(pokemon)}
+                  text='Add to Team'
+                />
               </div>
             ))}
           </div>

@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
 import pokemonReducer from '@/app/components/slices/pokemon-slice';
 import pokemonDetailsReducer from '@/app/components/slices/pokemonDetail-slice';
 import trainerReducer from '@/app/components/slices/trainer-slice';

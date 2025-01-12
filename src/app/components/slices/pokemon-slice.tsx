@@ -38,7 +38,7 @@ const pokemonSlice = createSlice({
         (state, action: PayloadAction<Pokemon[]>) => {
           state.pokemons = action.payload;
         },
-      )
+      );
   },
 });
 
@@ -77,7 +77,9 @@ export const fetchPokemonById = createAsyncThunk(
 
       return pokemonDetails;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data || 'Failed to catch the Pokémon!');
+      return rejectWithValue(
+        error.response?.data || 'Failed to catch the Pokémon!',
+      );
     }
   },
 );
@@ -109,4 +111,3 @@ export const fetchPokemons = createAsyncThunk(
     }
   },
 );
-
