@@ -1,5 +1,4 @@
 import '@/styles/globals.css';
-import '@/styles/colors.css';
 
 import { StoreProviderWrapper } from '@/app/components/storeProvider-wrapper';
 
